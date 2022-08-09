@@ -13,10 +13,6 @@ export class AddProductComponent implements OnInit {
   meterForm: FormGroup;
   validationMessages: any;
 
-  event = null;
-
-  // @Output() showEvent = new EventEmitter<boolean>();
-
   errorMessage: string | null = null;
 
   constructor(private utilsService: UtilsService,

@@ -30,6 +30,14 @@ export class ProductsService {
     return this.http.post<any>(`${apiURL}${route}`, data, { headers });
   }
 
+  editMeter(id: string, data: any): Observable<any> {
+    const headers = new HttpHeaders()
+      .set('Content-Type', 'application/json')
+      .set('accept', 'application/json');
+    const route = `/meters/${id}`;
+    return this.http.patch<any>(`${apiURL}${route}`, data, { headers });
+  }
+
   deleteMeter(id: string): Observable<any> {
     const headers = new HttpHeaders()
       .set('accept', 'application/json');

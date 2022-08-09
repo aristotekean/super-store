@@ -1,1 +1,158 @@
-<p>edit-product works!</p>
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Add product</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <form [formGroup]="meterForm" (ngSubmit)="createMeter(meterForm.value)" role="form">
+      <div class="modal-body">
+        <div class="form-group mt-2">
+          <label for="formControlserial">Serial</label>
+          <input type="text" formControlName="serial" class="form-control" id="formControlserial"
+            placeholder="342423423">
+          <ng-container *ngFor="let validation of validationMessages.serial">
+            <small class="form-text text-danger" *ngIf="meterForm.get('serial')?.hasError(validation.type) &&
+                    (meterForm.get('serial')?.dirty || meterForm.get('serial')?.touched) ">
+              {{validation.message}}
+            </small>
+          </ng-container>
+        </div>
+        <div class="form-group  mt-2">
+          <label for="formControlConnectionType">Connection type</label>
+          <select class="form-control" formControlName="connection_type" id="formControlConnectionType">
+            <option value="" selected disabled hidden>Choose one option</option>
+            <option value="directa">Directa</option>
+            <option value="semi-directa">Semi-directa</option>
+            <option value="indirecta">Indirecta</option>
+          </select>
+          <ng-container *ngFor="let validation of validationMessages.connection_type">
+            <small class="form-text text-danger" *ngIf="meterForm.get('connection_type')?.hasError(validation.type) &&
+                    (meterForm.get('connection_type')?.dirty || meterForm.get('connection_type')?.touched) ">
+              {{validation.message}}
+            </small>
+          </ng-container>
+        </div>
+        <div class="form-group  mt-2">
+          <label for="formControlStorage_system">Storage system</label>
+          <select class="form-control" formControlName="storage_system" id="formControlStorage_system">
+            <option value="" selected disabled hidden>Choose one option</option>
+            <option value="interno">Interno</option>
+            <option value="externo">Externo</option>
+          </select>
+          <ng-container *ngFor="let validation of validationMessages.storage_system">
+            <small class="form-text text-danger" *ngIf="meterForm.get('storage_system')?.hasError(validation.type) &&
+                    (meterForm.get('storage_system')?.dirty || meterForm.get('storage_system')?.touched) ">
+              {{validation.message}}
+            </small>
+          </ng-container>
+        </div>
+        <div class="form-group  mt-2">
+          <label for="formControlCondition">Condition</label>
+          <select class="form-control" formControlName="condition" id="formControlCondition">
+            <option value="" selected disabled hidden>Choose one option</option>
+            <option value="nuevo">Nuevo</option>
+            <option value="usado">Usado</option>
+          </select>
+          <ng-container *ngFor="let validation of validationMessages.condition">
+            <small class="form-text text-danger" *ngIf="meterForm.get('condition')?.hasError(validation.type) &&
+                    (meterForm.get('condition')?.dirty || meterForm.get('condition')?.touched) ">
+              {{validation.message}}
+            </small>
+          </ng-container>
+        </div>
+        <div class="form-group  mt-2">
+          <label for="formControlOwner">Owner</label>
+          <select class="form-control" formControlName="owner" id="formControlOwner">
+            <option value="" selected disabled hidden>Choose one option</option>
+            <option value="RF">RF</option>
+            <option value="OR">OR</option>
+          </select>
+          <ng-container *ngFor="let validation of validationMessages.owner">
+            <small class="form-text text-danger" *ngIf="meterForm.get('owner')?.hasError(validation.type) &&
+                    (meterForm.get('owner')?.dirty || meterForm.get('owner')?.touched) ">
+              {{validation.message}}
+            </small>
+          </ng-container>
+        </div>
+        <div class="form-group mt-2">
+          <label for="formControllocation">Location</label>
+          <input type="text" formControlName="location" class="form-control" id="formControllocation"
+            placeholder="Almacen palmira">
+          <ng-container *ngFor="let validation of validationMessages.location">
+            <small class="form-text text-danger" *ngIf="meterForm.get('location')?.hasError(validation.type) &&
+                    (meterForm.get('location')?.dirty || meterForm.get('location')?.touched) ">
+              {{validation.message}}
+            </small>
+          </ng-container>
+        </div>
+        <div class="form-group mt-2">
+          <label for="formControlmanufacturer">Manufacturer</label>
+          <input type="text" formControlName="manufacturer" class="form-control" id="formControlmanufacturer"
+            placeholder="yes">
+          <ng-container *ngFor="let validation of validationMessages.manufacturer">
+            <small class="form-text text-danger" *ngIf="meterForm.get('manufacturer')?.hasError(validation.type) &&
+                    (meterForm.get('manufacturer')?.dirty || meterForm.get('manufacturer')?.touched) ">
+              {{validation.message}}
+            </small>
+          </ng-container>
+        </div>
+        <div class="form-group mt-2">
+          <label for="formControlpurchase">Purchase</label>
+          <input type="date" formControlName="purchase" class="form-control" id="formControlpurchase">
+          <ng-container *ngFor="let validation of validationMessages.purchase">
+            <small class="form-text text-danger" *ngIf="meterForm.get('purchase')?.hasError(validation.type) &&
+                    (meterForm.get('purchase')?.dirty || meterForm.get('purchase')?.touched) ">
+              {{validation.message}}
+            </small>
+          </ng-container>
+        </div>
+
+        <div class="form-group mt-2">
+          <label for="formControli_max">i_max</label>
+          <input type="text" formControlName="i_max" class="form-control" id="formControli_max" placeholder="6345.654">
+          <ng-container *ngFor="let validation of validationMessages.i_max">
+            <small class="form-text text-danger" *ngIf="meterForm.get('i_max')?.hasError(validation.type) &&
+                    (meterForm.get('i_max')?.dirty || meterForm.get('i_max')?.touched) ">
+              {{validation.message}}
+            </small>
+          </ng-container>
+        </div>
+        <div class="form-group mt-2">
+          <label for="formControli_b">i_b</label>
+          <input type="text" formControlName="i_b" class="form-control" id="formControli_b" placeholder="21.5">
+          <ng-container *ngFor="let validation of validationMessages.i_b">
+            <small class="form-text text-danger" *ngIf="meterForm.get('i_b')?.hasError(validation.type) &&
+                    (meterForm.get('i_b')?.dirty || meterForm.get('i_b')?.touched) ">
+              {{validation.message}}
+            </small>
+          </ng-container>
+        </div>
+        <div class="form-group mt-2">
+          <label for="formControli_n">i_n</label>
+          <input type="text" formControlName="i_n" class="form-control" id="formControli_n" placeholder="876.5">
+          <ng-container *ngFor="let validation of validationMessages.i_n">
+            <small class="form-text text-danger" *ngIf="meterForm.get('i_n')?.hasError(validation.type) &&
+                    (meterForm.get('i_n')?.dirty || meterForm.get('i_n')?.touched) ">
+              {{validation.message}}
+            </small>
+          </ng-container>
+        </div>
+        <div class="form-group mt-2">
+          <label for="formControlseals">Seals</label>
+          <input type="text" formControlName="seals" class="form-control" id="formControlseals" placeholder="545.65">
+          <ng-container *ngFor="let validation of validationMessages.seals">
+            <small class="form-text text-danger" *ngIf="meterForm.get('seals')?.hasError(validation.type) &&
+                    (meterForm.get('seals')?.dirty || meterForm.get('seals')?.touched) ">
+              {{validation.message}}
+            </small>
+          </ng-container>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button [disabled]="meterForm.invalid" type="submit" class="btn btn-primary">Save</button>
+      </div>
+    </form>
+  </div>
+</div>

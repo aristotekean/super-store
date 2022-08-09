@@ -24,7 +24,8 @@ import { ViewProductComponent } from './view-product/view-product.component';
     SidebarComponent,
     NavbarComponent,
     AddProductComponent,
-    ViewProductComponent
+    ViewProductComponent,
+    EditProductComponent
   ]
 })
 export class SharedComponentsModule { }

@@ -15,10 +15,7 @@
             <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="exampleModalLabel"
               aria-hidden="true">
               <app-add-product></app-add-product>
-
             </div>
-
-
           </div>
         </div>
       </div>
@@ -60,14 +57,20 @@
               <td>{{item.seals}}</td>
               <td>
                 <button class="btn badge bg-info text-dark me-2" data-bs-toggle="modal"
-                data-bs-target="#seeProductModal">See</button>
+                  data-bs-target="#seeProductModal">See</button>
 
                 <div class="modal fade" id="seeProductModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <app-view-product [item]="item"></app-view-product>
+                  aria-hidden="true">
+                  <app-view-product [item]="item"></app-view-product>
 
-              </div>
-                <button class="btn badge bg-warning text-dark me-2">Edit</button>
+                </div>
+                <button class="btn badge bg-warning text-dark me-2" data-bs-toggle="modal"
+                  data-bs-target="#editProductModal">Edit</button>
+
+                <div class="modal fade" id="editProductModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                  aria-hidden="true">
+                  <app-edit-product [item]="item"></app-edit-product>
+                </div>
                 <button class="btn badge bg-danger" (click)="deleteItem(item.id, item.serial)">Delete</button>
               </td>
             </tr>
