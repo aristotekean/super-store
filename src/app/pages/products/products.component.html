@@ -26,7 +26,7 @@
           <div class="col-12">
             <div class="input-group rounded">
               <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
-                aria-describedby="search-addon"  #search/>
+                aria-describedby="search-addon" #search />
             </div>
           </div>
         </div>
@@ -92,8 +92,12 @@
         </table>
         <nav aria-label="Page navigation example">
           <ul class="pagination ">
-            <li class="page-item" *ngIf="response?.previous_page"><button class="page-link" (click)="previusPage()">Previous</button></li>
-            <li class="page-item" *ngIf="response?.next_page"><button class="page-link" (click)="nextPage()">Next</button></li>
+            <li class="page-item" *ngIf="response?.previous_page > -1 && response?.previous_page != null">
+              <button class="page-link" (click)="previusPage()">Previous</button>
+            </li>
+            <li class="page-item" *ngIf="response?.next_page > -1 && response?.next_page != null">
+              <button class="page-link" (click)="nextPage()">Next</button>
+            </li>
           </ul>
         </nav>
       </div>
