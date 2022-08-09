@@ -83,7 +83,7 @@ export class UtilsService {
 
     password: [
       { type: 'required', message: 'The password is required' },
-      { type: 'minlength', message: 'The password must be 8 or more characters' }
+      { type: 'minlength', message: 'The password must be 5 or more characters' }
     ],
 
     current_password: [
@@ -242,6 +242,39 @@ export class UtilsService {
     ],
     external_id: [
       { type: 'required', message: 'The external id is required' },
+    ],
+    serial: [
+      { type: 'required', message: 'The serial is required' },
+    ],
+    connection_type: [
+      { type: 'required', message: 'The connection type is required' },
+    ],
+    storage_system: [
+      { type: 'required', message: 'The storage system is required' },
+    ],
+    condition: [
+      { type: 'required', message: 'The condition is required' },
+    ],
+    location: [
+      { type: 'required', message: 'The location is required' },
+    ],
+    manufacturer: [
+      { type: 'required', message: 'The manufacturer is required' },
+    ],
+    purchase: [
+      { type: 'required', message: 'The purchase date is required' },
+    ],
+    i_max: [
+      { type: 'required', message: 'The i_max is required' },
+    ],
+    i_b: [
+      { type: 'required', message: 'The i_b is required' },
+    ],
+    i_n: [
+      { type: 'required', message: 'The i_n is required' },
+    ],
+    seals: [
+      { type: 'required', message: 'The seals is required' },
     ],
   };
 

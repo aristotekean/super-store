@@ -10,18 +10,31 @@ const apiURL = environment.apiURL;
 })
 export class ProductsService {
 
-  headers = new HttpHeaders();
 
   constructor(private http: HttpClient) { }
 
   getMeters(): Observable<any> {
+
+    const headers = new HttpHeaders()
+      .set('accept', 'application/json');
+
     const route = '/meters/';
-    return this.http.get<any>(`${apiURL}${route}`, { headers: this.headers });
+    return this.http.get<any>(`${apiURL}${route}`, { headers });
+  }
+
+  createMeter(data: any): Observable<any> {
+    const headers = new HttpHeaders()
+      .set('Content-Type', 'application/json')
+      .set('accept', 'application/json');
+    const route = '/meters/';
+    return this.http.post<any>(`${apiURL}${route}`, data, { headers });
   }
 
   deleteMeter(id: string): Observable<any> {
+    const headers = new HttpHeaders()
+      .set('accept', 'application/json');
     const route = `/meters/${id}`;
-    return this.http.delete<any>(`${apiURL}${route}`, { headers: this.headers });
+    return this.http.delete<any>(`${apiURL}${route}`, { headers });
   }
 
 }
