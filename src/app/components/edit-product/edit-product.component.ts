@@ -81,7 +81,7 @@ export class EditProductComponent implements OnInit {
           this.errorMessage = e;
         },
         complete: () => {
-          alert(`Product ${this.item.id} actualizado con exito`)
+          alert(`Product ${dataForm.serial} actualizado con exito`)
           this.meterForm.reset();
         }
       }

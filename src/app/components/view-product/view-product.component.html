@@ -10,8 +10,15 @@
         </pre>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-danger" (click)="deleteItem(item.id, item.serial)" data-bs-dismiss="modal">Delete</button>
-      <button type="submit" class="btn btn-warning">Edit</button>
+      <button type="button" class="btn btn-danger" (click)="deleteItem(item.id, item.serial)"
+        data-bs-dismiss="modal">Delete</button>
+      <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+        data-bs-target="#editProductModal2">Edit</button>
+
+      <div class="modal fade" id="editProductModal2" tabindex="-1" aria-labelledby="exampleModalLabel2"
+        aria-hidden="true">
+        <app-edit-product [item]="item"></app-edit-product>
+      </div>
     </div>
   </div>
 </div>

@@ -8,7 +8,11 @@ import { ProductsService } from '../../services/products.service';
 })
 export class ViewProductComponent implements OnInit {
 
-  @Input() item: any = '';
+  item: any = '';
+
+  @Input('item') set updateItem(item: any) {
+    this.item = item;
+  }
 
   constructor(private productsService: ProductsService) { }
 

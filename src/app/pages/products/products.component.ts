@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { debounceTime, distinctUntilChanged, filter, fromEvent, tap } from 'rxjs';
 import { ProductsService } from '../../services/products.service';
 interface Response {
   items?: Item[];
@@ -38,7 +39,12 @@ export class ProductsComponent implements OnInit {
 
   showAddProduct = false;
 
-  constructor(private productsService: ProductsService) { }
+  textTosearch: string = '';
+  page = 0;
+
+  @ViewChild('search') input: ElementRef = new ElementRef(null);
+
+  constructor(private productsService: ProductsService,) { }
 
   deleteItem(id: number, serial: string) {
 
@@ -57,8 +63,17 @@ export class ProductsComponent implements OnInit {
 
   }
 
+  nextPage() {
+    this.page = this.page + 1;
+    this.loadData();
+  }
+  previusPage() {
+    this.page = this.page - 1;
+    this.loadData();
+  }
+
   loadData() {
-    this.productsService.getMeters().subscribe(
+    this.productsService.getMeters(this.page, this.textTosearch).subscribe(
       {
         next: (v) => {
           Object.assign(this.response, v);
@@ -71,6 +86,20 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadData();
+  }
+
+  ngAfterViewInit() {
+    fromEvent(this.input.nativeElement, 'keyup')
+      .pipe(
+        filter(Boolean),
+        debounceTime(600),
+        distinctUntilChanged(),
+        tap((text) => {
+          this.textTosearch = this.input.nativeElement.value;
+          this.loadData();
+        })
+      )
+      .subscribe();
   }
 
 }
