@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  environmentName: 'Prd',
+  apiURL: 'https://ops.enerbit.dev/learning/api/v1',
 };
