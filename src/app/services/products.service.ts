@@ -19,4 +19,9 @@ export class ProductsService {
     return this.http.get<any>(`${apiURL}${route}`, { headers: this.headers });
   }
 
+  deleteMeter(id: string): Observable<any> {
+    const route = `/meters/${id}`;
+    return this.http.delete<any>(`${apiURL}${route}`, { headers: this.headers });
+  }
+
 }

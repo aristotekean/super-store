@@ -36,7 +36,26 @@ export class ProductsComponent implements OnInit {
 
   response: Response = {}
 
+  showAddProduct = false;
+
   constructor(private productsService: ProductsService) { }
+
+  deleteItem(id: number, serial: string) {
+
+    if (window.confirm(`Are you sure that want delete the item with serial ${serial}?`)) {
+      this.productsService.deleteMeter(id.toString()).subscribe(
+        {
+          error: e => {
+            console.log(e);
+          },
+          complete: () => {
+            alert(`The item with serial ${serial} was deleted`);
+            this.loadData();
+          }
+        })
+    }
+
+  }
 
   loadData() {
     this.productsService.getMeters().subscribe(

@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { UserDataService } from '../../services/user-data.service';
 import { AuthenticationService } from '../../services/authentication.service';
 import { UtilsService } from '../../services/utils.service';
-import { NotificationsService } from '../../services/notifications.service';
 import { Router } from '@angular/router';
 import { StorageService } from '../../services/storage.service';
 
